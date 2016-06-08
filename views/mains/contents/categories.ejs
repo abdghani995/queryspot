@@ -1,0 +1,139 @@
+<%
+var count = data.length;
+var left=center=right=Math.floor(count/3);
+count-=(left+center+right);
+var j=0;
+if(count>=1)
+	{
+		left+=1;
+		count-=1;
+	}
+if(count>=1)
+	{
+		center+=1;
+		count-=1;
+	}
+%>
+
+<section class="container-fluid" id="section5">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="container">
+    <div class="row">
+<!------------------------------------------------------------------------------>
+	<!-- left -->
+      <div class="col-sm-4 col-xs-12">
+            
+				<% for(var j=0;j<left;j++) 
+						{
+				%>
+					<div class="list-group">
+							<a href="#" class="list-group-item active">
+							<h2 class="list-group-item-heading"><%=data[j].name%></h2>
+							
+							</a>
+							
+							<%
+								for(var i=0;i<subcat.length;i++)
+								{
+									if(subcat[i].ref_id===data[j].id){
+							%>		
+								<a href="#" class="list-group-item">
+									<p class="list-group-item-text">
+										
+										<%=subcat[i].name%>
+									</p>
+								</a>
+					  		<% 	
+					  			}
+					  		}
+					  		%>
+             		
+					 </div>
+
+				<% 
+				} 
+			%>
+					
+           
+      </div><!--/left-->
+<!------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------>
+	<!-- left -->
+      <div class="col-sm-4 col-xs-12">
+            	<% 
+            		for(;j<left+center;j++) 
+						{
+				%>
+					<div class="list-group">
+							<a href="#" class="list-group-item active">
+							<h2 class="list-group-item-heading"><%=data[j].name%></h2>
+							
+							</a>
+							<%
+								for(var i=0;i<subcat.length;i++)
+								{
+									if(subcat[i].ref_id===data[j].id){
+							%>		
+								<a href="#" class="list-group-item">
+									<p class="list-group-item-text">
+										
+										<%=subcat[i].name%>
+									</p>
+								</a>
+					  		<% 	
+					  			}
+					  		}
+					  		%>
+             		
+					 </div>
+				
+				<% 
+				} 
+				%>
+      </div><!--/left-->
+<!------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------>
+	<!-- left -->
+      <div class="col-sm-4 col-xs-12">
+            	<% 
+            		for(;j<left+center+right;j++) 
+						{
+				%>
+				
+					<div class="list-group">
+							<a href="#" class="list-group-item active">
+							<h2 class="list-group-item-heading"><%=data[j].name%></h2>
+							
+							</a>
+							
+							 <%
+								for(var i=0;i<subcat.length;i++)
+								{
+									if(subcat[i].ref_id===data[j].id){
+							%>		
+								<a href="#" class="list-group-item">
+									<p class="list-group-item-text">
+										
+										<%=subcat[i].name%>
+									</p>
+								</a>
+					  		<% 	
+					  			}
+					  		}
+					  		%>
+					  
+             		
+					 </div>
+				<% 
+				} 
+				%>	
+					
+           
+      </div><!--/left-->
+<!------------------------------------------------------------------------------>
+	<!-- left -->
+    </div><!--/row-->
+    </div><!--/container--> 
+  </div>
+
+</section>

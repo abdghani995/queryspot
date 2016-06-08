@@ -1,0 +1,206 @@
+<%
+var count = data.length;
+var left=center=right=Math.floor(count/3);
+count-=(left+center+right);
+var j=0;
+if(count>=1)
+	{
+		left+=1;
+		count-=1;
+	}
+if(count>=1)
+	{
+		center+=1;
+		count-=1;
+	}
+%>
+<script>
+	function show(a){
+	$('#mcat'+a).toggle('fast');
+	var src=document.getElementById('img'+a).src.slice( -7 );
+		if(src==='add.png')
+				{
+				document.getElementById('img'+a).src="/images/minus.png";
+				}
+			else{
+				document.getElementById('img'+a).src="/images/add.png";
+				}
+	}
+	function del(id){
+	var r = confirm("Are You Sure You Want To Delete . Activity will be logged");
+	if (r == true)
+			{
+				window.location="/admin/del/"+id;
+			}
+	}
+</script>
+
+<section class="container-fluid" id="section5" ng-app>
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="container">
+    <div class="row">
+<!------------------------------------------------------------------------------>
+	<!-- left -->
+      <div class="col-sm-4 col-xs-12">
+
+				<% for(var j=0;j<left;j++)
+						{
+				%>
+					<div class="list-group">
+							<a href="#" class="list-group-item active">
+							<h2 class="list-group-item-heading"><%=data[j].name%></h2>
+							</a>
+
+							<%
+								for(var i=0;i<subcat.length;i++)
+								{
+									if(subcat[i].ref_id===data[j].id){
+							%>
+								<a href="#" class="list-group-item" id="scat<%=subcat[i].id%>">
+									<p class="list-group-item-text">
+										<h4>
+										<%=subcat[i].name%>
+										<img src="/images/delete.png" class="pull-right" onclick="del('<%=subcat[i]._id%>')">
+										</h4>
+									</p>
+								</a>
+					  		<%
+					  			}
+					  		}
+					  		%>
+					  			<a href="#" class="list-group-item" id="mcat<%=data[j].id%>" style="display:none">
+									<form action="/admin/add_cat" method="post">
+									<p class="list-group-item-text">
+										<input type="text" name="name" class="form-control" style="width:150px;float:left" placeholder="SUBCATEGORY" required>
+										<input type="hidden" name="main_cat_name" value="<%=data[j].id%>">
+										<button class="btn btn-success pull-right" style="float:right;width:45px" ><h6 style="text-align:center">ADD</h6></button>
+										<br><br>
+									</p>
+									</form>
+								</a>
+             					<a href="#" class="list-group-item" onclick="show('<%=data[j].id%>')">
+									<h4 class="list-group-item-text" >
+										ADD<img src="/images/add.png" style="pull:right" id="img<%=data[j].id%>">
+									</h4>
+								</a>
+					 </div>
+
+				<%
+				}
+			%>
+
+
+      </div><!--/left-->
+<!------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------>
+	<!-- left -->
+      <div class="col-sm-4 col-xs-12">
+            	<%
+            		for(;j<left+center;j++)
+						{
+				%>
+					<div class="list-group">
+							<a href="#" class="list-group-item active">
+							<h2 class="list-group-item-heading"><%=data[j].name%></h2>
+
+							</a>
+							<%
+								for(var i=0;i<subcat.length;i++)
+								{
+									if(subcat[i].ref_id===data[j].id){
+							%>
+								<a href="#" class="list-group-item">
+									<p class="list-group-item-text">
+										<h4>
+										<%=subcat[i].name%>
+										<img src="/images/delete.png" class="pull-right" onclick="del('<%=subcat[i]._id%>')">
+										</h4>
+									</p>
+								</a>
+					  		<%
+					  			}
+					  		}
+					  		%>
+             					<a href="#" class="list-group-item" id="mcat<%=data[j].id%>" style="display:none">
+									<form action="/admin/add_cat" method="post">
+									<p class="list-group-item-text">
+										<input type="text" name="name" class="form-control" style="width:150px;float:left" placeholder="SUBCATEGORY" required>
+										<input type="hidden" name="main_cat_name" value="<%=data[j].id%>">
+										<button class="btn btn-success pull-right" style="float:right;width:45px" ><h6 style="text-align:center">ADD</h6></button>
+										<br><br>
+									</p>
+									</form>
+								</a>
+             					<a href="#" class="list-group-item" onclick="show('<%=data[j].id%>')">
+									<h4 class="list-group-item-text" >
+										ADD<img src="/images/add.png" style="pull:right" id="img<%=data[j].id%>">
+									</h4>
+								</a>
+					 </div>
+
+				<%
+				}
+				%>
+      </div><!--/left-->
+<!------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------>
+	<!-- left -->
+      <div class="col-sm-4 col-xs-12">
+            	<%
+            		for(;j<left+center+right;j++)
+						{
+				%>
+
+					<div class="list-group">
+							<a href="#" class="list-group-item active">
+							<h2 class="list-group-item-heading"><%=data[j].name%></h2>
+
+							</a>
+
+							 <%
+								for(var i=0;i<subcat.length;i++)
+								{
+									if(subcat[i].ref_id===data[j].id){
+							%>
+								<a href="#" class="list-group-item">
+									<p class="list-group-item-text">
+										<h4>
+										<%=subcat[i].name%>
+										<img src="/images/delete.png" class="pull-right" onclick="del('<%=subcat[i]._id%>')">
+										</h4>
+									</p>
+								</a>
+					  		<%
+					  			}
+					  		}
+					  		%>
+					  			<a href="#" class="list-group-item" id="mcat<%=data[j].id%>" style="display:none">
+									<form action="/admin/add_cat" method="post">
+									<p class="list-group-item-text">
+										<input type="text" name="name" class="form-control" style="width:150px;float:left" placeholder="SUBCATEGORY" required>
+										<input type="hidden" name="main_cat_name" value="<%=data[j].id%>">
+										<button class="btn btn-success pull-right" style="float:right;width:45px" ><h6 style="text-align:center">ADD</h6></button>
+										<br><br>
+									</p>
+									</form>
+								</a>
+             					<a href="#" class="list-group-item" onclick="show('<%=data[j].id%>')">
+									<h4 class="list-group-item-text" >
+										ADD<img src="/images/add.png" style="pull:right" id="img<%=data[j].id%>">
+									</h4>
+								</a>
+
+					 </div>
+				<%
+				}
+				%>
+
+
+      </div><!--/left-->
+<!------------------------------------------------------------------------------>
+	<!-- left -->
+    </div><!--/row-->
+    </div><!--/container-->
+  </div>
+
+</section>

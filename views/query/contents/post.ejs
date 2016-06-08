@@ -1,0 +1,59 @@
+<br><br><br><br>
+<div class="container" >
+	<h1 >ASK A QUESTION</h1>
+	<hr>
+	<p>Welcome to <% include ../../basicsitename1.ejs %>!</p>
+	<br>
+	<p>
+	We’d love to search the best solution for your query. To improve your chances, here are some tips:
+	Tell us what you found (on this site or elsewhere) and why it didn’t meet your needs.
+	</p>
+	<hr>	
+
+		<div ng-app="textAngularTest" ng-controller="wysiwygeditor" class="container app">
+			<!--HEAD-->
+			<div class="input-group input-group-lg">
+				<h2><label for="head">HEAD</label></h2>
+  				<input type="text" class="form-control" placeholder="HEADING" aria-describedby="sizing-addon1" size="95%" name="head" id="head" ng-model="head">
+  				<br><br><br><br><hr>
+  			</div>
+  			<!--CATEGORY-->
+  			<div class="input-group input-group-lg" >
+				<h2><label for="head">CATEGORY</label></h2>
+  						
+  						<div>
+  							<h3>MAIN CATEGORY</h3>
+	  						<select class="form-control" ng-change="scat()" ng-model="item">
+	  							<option ng-repeat='mcat in mcats' value={{mcat.id}}>{{mcat.name}}</option>
+	  						</select>
+  						</div>
+  						<div ng-show="scat_display">
+  							<h3>SUB CATEGORY</h3>
+	  						<select class="form-control" ng-model="sitem">
+	  							<option ng-repeat='scat in scats' value={{scat._id}}>{{scat.name}}</option>
+	  						</select>
+  						</div>
+  						
+
+  				<br><br><br><br><hr>
+  			</div>
+  			<!--actual query-->
+            <div class="form-group">
+			  <h2><label for="query">QUERY</label></h2>
+			  <p>to enter a code use 'pre'</p>
+			  <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
+			</div>
+				<br><br><hr>
+			<!--TAGS-->
+				<h2>TAGS</h2>
+				<p>make use of tag for better solutions</p>
+				<input type="text" class="form-control" placeholder="TAGS" aria-describedby="sizing-addon1" size="95%" id="testInput" ng-model="testInput">
+
+				<input type="text" id="testInput" value="SELECT TAGS FROM HERE"/>
+			<br>
+			<hr>
+				<button class="btn btn-success btn-lg  center-block" align="center" ng-click="submitf()">SUBMIT</button>
+			<br>
+		</div>
+
+</div>

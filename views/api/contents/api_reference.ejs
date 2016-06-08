@@ -1,0 +1,38 @@
+<div class="container-fluid">
+		<h1>API REFERENCES</h1>
+		<table class="table table-striped">
+			<thead>
+				<th>
+					<h1> URL </h1>
+				</th>
+				<th>
+					<h1> DETAILS</h1>
+				</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<input class="form-control" ng-model="apiUrl">
+					</td>
+					<td>
+						<input class="form-control" ng-model="apiDesc">
+					</td>
+					<td>
+						<button class="btn btn-success" ng-click="add_api()">ADD</button>
+					</td>
+				</tr>
+				<tr ng-repeat='api in apis'>
+					<td>
+						<h5>{{api.url}}</h5>
+					</td>
+					<td>
+						<h5>{{api.description}}</h5>
+					</td>
+					<td>
+						<button class="btn btn-danger" ng-click="delete(api._id)">DELETE</button>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+</div>

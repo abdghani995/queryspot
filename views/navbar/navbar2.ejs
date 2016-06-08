@@ -1,0 +1,53 @@
+<nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h2><% include ../basicsitename.ejs %></h2>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-collapsible">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="/query/top_queries">TOP QUERIES</a></li>
+        <li><a href="/query">ASK</a></li>
+
+   		<!-- LOGIN LOGIC-->
+				<li>
+            <% if(typeof (acc)=== 'undefined')  { %>
+        		<a href='/login' >LOGIN</a>
+            <% }else{ %>
+            <a href="/account" class="dropdown-toggle" data-toggle="dropdown">
+      			    <%=acc.name%>
+      			<span class="caret"></span>
+            </a>
+            <% } %>
+			 <ul class="dropdown-menu">
+                <li><a href="/account">VIEW PROFILE</a></li>
+				<% if(typeof (acc)!== 'undefined' && acc.admin===1){ %>
+				<li><a href="/admin">ADMIN PANEL</a></li>
+        <li><a href="/api">API</a></li>
+				<%}%>
+                <li><a href="/logout">LOGOUT</a></li>
+				</li>
+			 </ul>
+        </li>
+	    <!-- /LOGIN -->
+
+      </ul>
+      <form class="navbar-form">
+        <div class="form-group" style="display:inline;">
+          <div class="input-group">
+
+            <input type="text" class="form-control" placeholder="What are searching for?">
+
+			<span class="input-group-addon">search</span>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</nav>
